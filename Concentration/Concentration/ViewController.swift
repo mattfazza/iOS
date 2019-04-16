@@ -23,13 +23,18 @@ class ViewController: UIViewController {
     //array of card buttons
     @IBOutlet var cardButtons: [UIButton]!
     
+    var emojiChoices = ["🐝", "🦂", "🕷", "🦗", "🐛", "🐜", "🐞", "🦟", "🐝", "🦂", "🕷", "🦗", "🐛", "🐜", "🐞", "🦟"]
+    
     //directive + func keyword + name of function(_ and sender are names of the parameter: UIButton is the type) *_ means no arg since it's an internal ios who is sending it
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
-        let cardNumber = cardButtons.index(of: sender)!
-        print("card number: \(cardNumber)")
-        
-        
+        //let cardNumber = cardButtons.index(of: sender)!  is the alternative syntax for
+        if let cardNumber = cardButtons.index(of: sender){
+            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
+            print("card number: \(cardNumber)")
+        }else{
+            print("the chosen card was not in card buttons")
+        }
         
         //flipCard(withEmoji: "🐛", on: sender) //notice that the argument name "on" matches the external argument name on the function definition
     }
@@ -45,10 +50,6 @@ class ViewController: UIViewController {
             button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }//end of flipCard
-    
-    
-    
-
     
 }
 
