@@ -24,8 +24,8 @@ struct Card {
     }
     
     //inits tend fo have the external and the internal name being the same
-    init(identifier: Int){
-        self.identifier = identifier
+    init(){
+        self.identifier = Card.getUniqueIdentifier()
     }
     
 }

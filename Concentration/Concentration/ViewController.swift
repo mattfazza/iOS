@@ -11,32 +11,34 @@ import UIKit
 class ViewController: UIViewController {
     
     //classes get a free init as long as all of their vars are initialized
-    //var game = Concentration()
+    //without lazy, the line above wouldn't be able to use cardButtons (it hasn't been initialized yet)
+    //lazy cannot have a didSet though
+    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1)  / 2)
     
+    var emojiChoices = ["🐝", "🦂", "🕷", "🦗", "🐛", "🐜", "🐞", "🦟"]
+    
+    //var flipCount: Int = 0 is the same thing *could be initialized with a initializer as well, but iheritance makes it a bit tricky
     var flipCount = 0 {
         //property observer
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
+        didSet { flipCountLabel.text = "Flips: \(flipCount)" }
     }
-    //var flipCount: Int = 0 is the same thing *could be initialized with a initializer as well, but iheritance makes it a bit tricky
+    
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
-    
-    
-    //array of card buttons
     @IBOutlet var cardButtons: [UIButton]!
     
-    var emojiChoices = ["🐝", "🦂", "🕷", "🦗", "🐛", "🐜", "🐞", "🦟", "🐝", "🦂", "🕷", "🦗", "🐛", "🐜", "🐞", "🦟"]
+    
     
     //directive + func keyword + name of function(_ and sender are names of the parameter: UIButton is the type) *_ means no arg since it's an internal ios who is sending it
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         //let cardNumber = cardButtons.index(of: sender)!  is the alternative syntax for
         if let cardNumber = cardButtons.index(of: sender){
-            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
-            print("card number: \(cardNumber)")
+        
+            //flipCard(withEmoji: emojiChoices[cardNumber], on: sender) is replaced by
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
         }else{
             print("the chosen card was not in card buttons")
         }
@@ -44,7 +46,27 @@ class ViewController: UIViewController {
         //flipCard(withEmoji: "🐛", on: sender) //notice that the argument name "on" matches the external argument name on the function definition
     }
     
+    func updateViewFromModel() {
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            
+            if card.isFaceUp{
+                button.setTitle(emoji(for: card), for: UIControl.State.normal)
+                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            } else {
+                button.setTitle("", for: UIControl.State.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.714150488, green: 0.6348293042, blue: 1, alpha: 0) : #colorLiteral(red: 0.714150488, green: 0.6348293042, blue: 1, alpha: 1)
+            }
+        }
+    }
     
+    
+    func emoji(for card: Card) -> String {
+        return "?"
+    }
+    
+    /*
     //internal name is emoji, withEmoji is the external one for the caller
     func flipCard(withEmoji emoji: String, on button: UIButton){
         if button.currentTitle == emoji{
@@ -55,6 +77,6 @@ class ViewController: UIViewController {
             button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }//end of flipCard
-    
+    */
 }
 

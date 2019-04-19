@@ -11,11 +11,15 @@ import Foundation
 class Concentration {
     
     //could have an init method too, but I'll leave this array empty and uninitialized
-    var cards = Array<Card>()
-    //var cards = [Card]()
+    //var cards = Array<Card>()
+    var cards = [Card]()
     
     func chooseCard(at index: Int){
-        
+        if cards[index].isFaceUp{
+            cards[index].isFaceUp = false
+        } else {
+            cards[index].isFaceUp = true
+        }
     }
     
     init(numberOfPairsOfCards: Int){
@@ -24,7 +28,7 @@ class Concentration {
         //for identifier in 0..<numberOfPairsOfCards{
         
         for _ in 1...numberOfPairsOfCards{
-            let card = Card(identifier: identifier)
+            let card = Card()
             /*
             let matchingCard = card
             cards.append(card)
