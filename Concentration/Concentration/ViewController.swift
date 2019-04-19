@@ -61,9 +61,26 @@ class ViewController: UIViewController {
         }
     }
     
+    //dictionary
+    var emoji = [Int:String]()
     
     func emoji(for card: Card) -> String {
-        return "?"
+        
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
+        
+        //if you don't set it with if, the type of chosenEmoji will be an optional
+        /* another way to write this is noted below
+        if chosenEmoji != nil {
+            return emoji[card.identifier]!
+        } else {
+            return "?"
+        }
+        */
+        
+        return emoji[card.identifier] ?? "?"
     }
     
     /*
