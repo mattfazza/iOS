@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var flipCountLabel: UILabel!
+    //classes get a free init as long as all of their vars are initialized
+    //var game = Concentration()
     
     var flipCount = 0 {
         //property observer
@@ -19,6 +20,10 @@ class ViewController: UIViewController {
         }
     }
     //var flipCount: Int = 0 is the same thing *could be initialized with a initializer as well, but iheritance makes it a bit tricky
+    
+    @IBOutlet weak var flipCountLabel: UILabel!
+    
+    
     
     //array of card buttons
     @IBOutlet var cardButtons: [UIButton]!

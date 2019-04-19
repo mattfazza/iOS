@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1735601822696F0A002F0A7C /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735601722696F0A002F0A7C /* Concentration.swift */; };
+		1735601A22696FC0002F0A7C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735601922696FC0002F0A7C /* Card.swift */; };
 		17C578CD2265185A004B34A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C578CC2265185A004B34A3 /* AppDelegate.swift */; };
 		17C578CF2265185A004B34A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C578CE2265185A004B34A3 /* ViewController.swift */; };
 		17C578D22265185A004B34A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C578D02265185A004B34A3 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1735601722696F0A002F0A7C /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		1735601922696FC0002F0A7C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		17C578C92265185A004B34A3 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C578CC2265185A004B34A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17C578CE2265185A004B34A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 		17C578CB2265185A004B34A3 /* Concentration */ = {
 			isa = PBXGroup;
 			children = (
+				1735601722696F0A002F0A7C /* Concentration.swift */,
+				1735601922696FC0002F0A7C /* Card.swift */,
 				17C578DE22651995004B34A3 /* Supporting Files */,
 				17C578CE2265185A004B34A3 /* ViewController.swift */,
 				17C578D02265185A004B34A3 /* Main.storyboard */,
@@ -145,6 +151,8 @@
 			files = (
 				17C578CF2265185A004B34A3 /* ViewController.swift in Sources */,
 				17C578CD2265185A004B34A3 /* AppDelegate.swift in Sources */,
+				1735601822696F0A002F0A7C /* Concentration.swift in Sources */,
+				1735601A22696FC0002F0A7C /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
